@@ -22,8 +22,7 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -142,8 +141,7 @@
             <a class="dropdown-item" href="#">
               <strong>David Miller</strong>
               <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end
-                of the box so they don't overflow over to the sides!</div>
+              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">
@@ -155,8 +153,7 @@
             <a class="dropdown-item" href="#">
               <strong>John Doe</strong>
               <span class="small float-right text-muted">11:21 AM</span>
-              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can
-                discuss distribution.</div>
+              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item small" href="#">View all messages</a>
@@ -252,30 +249,14 @@
                   <th>author_id</th>
                 </tr>
               </thead>
-              <!--tfoot>
-                <tr>
-                  <th>id</th>
-                  <th>author_name</th>
-                  <th>status</th>
-                  <th>create_time</th>
-                  <th>author_id</th>
-                </tr>
-              </tfoot-->
               <tbody id="table_content">
-                <tr>
+                <!--tr>
                   <td>Tiger Nixon</td>
                   <td>System Architect</td>
                   <td>Edinburgh</td>
                   <td>Edinburgh</td>
                   <td>Edinburgh</td>
-                </tr>
-                <tr>
-                  <td>Garrett Winters</td>
-                  <td>Accountant</td>
-                  <td>Tokyo</td>
-                  <td>Edinburgh</td>
-                  <td>Edinburgh</td>
-                </tr>
+                </tr-->
               </tbody>
             </table>
           </div>
@@ -327,20 +308,35 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
 
-    <!--get json data length-->
+    <!--get json data and set html-->
     <script>
-      function getJsonLength(jsonData) {
-        var jsonLength = 0;
-        for (var item in jsonData) {
-          jsonLength++;
-        }
-        return jsonLength;
+    function getJsonLength(jsonData) {
+      var jsonLength = 0;
+      for (var item in jsonData) {
+        jsonLength++;
       }
+      return jsonLength;
+    }
+    $.getJSON('http://localhost:3000/get_author', function(data) {
+      var jsonLength = getJsonLength(data);
+      var htmlString = "";
+      for (var i = 0; i < jsonLength; i++) {
+        /*<tr>
+                  <th>id</th>
+                  <th>author_name</th>
+                  <th>status</th>
+                  <th>create_time</th>
+                  <th>author_id</th>
+        </tr>*/
+        htmlString += "<tr><th>" + data[i].id +
+          "</th><th>" + data[i].author_name +
+          "</th><th>" + data[i].status +
+          "</th><th>" + data[i].create_time +
+          "</th><th>" + data[i].author_id + "</th></tr>";
+      }
+      $("#table_content").html(htmlString);
+    });
 
-      $.getJSON('http://localhost:3000/get_author', function (data) {
-        //data is the JSON string
-        console.log(data);
-      });
     </script>
 
   </div>

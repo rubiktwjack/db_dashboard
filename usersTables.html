@@ -96,10 +96,13 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>author_name</th>
+                  <th>user_id</th>
+                  <th>user_password</th>
+                  <th>email</th>
+                  <th>phone</th>
+                  <th>address</th>
                   <th>status</th>
-                  <th>create_time</th>
-                  <th>author_id</th>
+                  <th>creation_time</th>
                 </tr>
               </thead>
               <tbody id="table_content">
@@ -170,22 +173,31 @@
         }
         return jsonLength;
       }
-      $.getJSON('http://localhost:3000/get_author', function (data) {
+      $.getJSON('http://localhost:3000/get_users', function (data) {
         var jsonLength = getJsonLength(data);
         var htmlString = "";
         for (var i = 0; i < jsonLength; i++) {
           /*<tr>
-                    <th>id</th>
-                    <th>author_name</th>
-                    <th>status</th>
-                    <th>create_time</th>
-                    <th>author_id</th>
+                    <tr>
+                  <th>id</th>
+                  <th>user_id</th>
+                  <th>user_password</th>
+                  <th>email</th>
+                  <th>phone</th>
+                  <th>address</th>
+                  <th>status</th>
+                  <th>creation_time</th>
+                </tr>
           </tr>*/
           htmlString += "<tr><th>" + data[i].id +
-            "</th><th>" + data[i].author_name +
+            "</th><th>" + data[i].user_id +
+            "</th><th>" + data[i].user_password +
+            "</th><th>" + data[i].email +
+            "</th><th>" + data[i].phone + 
+            "</th><th>" + data[i].address +
             "</th><th>" + data[i].status +
-            "</th><th>" + data[i].create_time +
-            "</th><th>" + data[i].author_id + "</th></tr>";
+            "</th><th>" + data[i].creation_time +
+            "</th></tr>";
         }
         $("#table_content").html(htmlString);
       });

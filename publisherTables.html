@@ -96,10 +96,10 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>author_name</th>
+                  <th>publisher_id</th>
+                  <th>company_name</th>
                   <th>status</th>
-                  <th>create_time</th>
-                  <th>author_id</th>
+                  <th>creation_time</th>
                 </tr>
               </thead>
               <tbody id="table_content">
@@ -170,22 +170,24 @@
         }
         return jsonLength;
       }
-      $.getJSON('http://localhost:3000/get_author', function (data) {
+      $.getJSON('http://localhost:3000/get_publisher', function (data) {
         var jsonLength = getJsonLength(data);
         var htmlString = "";
         for (var i = 0; i < jsonLength; i++) {
           /*<tr>
-                    <th>id</th>
-                    <th>author_name</th>
-                    <th>status</th>
-                    <th>create_time</th>
-                    <th>author_id</th>
+                    <tr>
+                  <th>id</th>
+                  <th>publisher_id</th>
+                  <th>company_name</th>
+                  <th>status</th>
+                  <th>creation_time</th>
+                </tr>
           </tr>*/
           htmlString += "<tr><th>" + data[i].id +
-            "</th><th>" + data[i].author_name +
+            "</th><th>" + data[i].publisher_id +
+            "</th><th>" + data[i].company_name +
             "</th><th>" + data[i].status +
-            "</th><th>" + data[i].create_time +
-            "</th><th>" + data[i].author_id + "</th></tr>";
+            "</th><th>" + data[i].creation_time + "</th></tr>";
         }
         $("#table_content").html(htmlString);
       });

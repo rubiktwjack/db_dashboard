@@ -96,10 +96,18 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>author_name</th>
-                  <th>status</th>
-                  <th>create_time</th>
+                  <th>book_id</th>
+                  <th>book_name</th>
+                  <th>book_title</th>
+                  <th>book_description</th>
+                  <th>publish_date</th>
+                  <th>book_isbn</th>
+                  <th>book_price</th>
                   <th>author_id</th>
+                  <th>publish_id</th>
+                  <th>state</th>
+                  <th>create_time</th>
+                  <th>book_img</th>
                 </tr>
               </thead>
               <tbody id="table_content">
@@ -170,25 +178,43 @@
         }
         return jsonLength;
       }
-      $.getJSON('http://localhost:3000/get_author', function (data) {
+      $.getJSON('http://localhost:3000/get_books', function (data) {
         var jsonLength = getJsonLength(data);
         var htmlString = "";
         for (var i = 0; i < jsonLength; i++) {
           /*<tr>
-                    <th>id</th>
-                    <th>author_name</th>
-                    <th>status</th>
-                    <th>create_time</th>
-                    <th>author_id</th>
+                  <th>id</th>
+                  <th>book_id</th>
+                  <th>book_name</th>
+                  <th>book_title</th>
+                  <th>book_description</th>
+                  <th>publish_date</th>
+                  <th>book_isbn</th>
+                  <th>book_price</th>
+                  <th>author_id</th>
+                  <th>publish_id</th>
+                  <th>state</th>
+                  <th>create_time</th>
+                  <th>book_img</th>
           </tr>*/
           htmlString += "<tr><th>" + data[i].id +
-            "</th><th>" + data[i].author_name +
-            "</th><th>" + data[i].status +
+            "</th><th>" + data[i].book_id +
+            "</th><th>" + data[i].book_name +
+            "</th><th>" + data[i].book_title +
+            "</th><th>" + data[i].book_description + 
+            "</th><th>" + data[i].publish_date +
+            "</th><th>" + data[i].book_isbn +
+            "</th><th>" + data[i].book_price +
+            "</th><th>" + data[i].author_id +
+            "</th><th>" + data[i].publish_id +
+            "</th><th>" + data[i].state +
             "</th><th>" + data[i].create_time +
-            "</th><th>" + data[i].author_id + "</th></tr>";
+            "</th><th>" + data[i].book_img +
+            "</th></tr>";
         }
         $("#table_content").html(htmlString);
       });
+      
 
     </script>
 

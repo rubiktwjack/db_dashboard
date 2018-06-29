@@ -95,17 +95,26 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Author Table</div>
-        <div class="card-body">
+          <i class="fa fa-table"></i> Insert to Author Table</div>
+        <!--div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"-->
+        <div>
+          <div>
+            <table>
               <thead>
-                <tr>
-                  <th>id</th>
+                <tr>                  
+                  <form action="insert.js" method="post">
+                    <br>
+                    姓名: <input type="text" name="fname" />
+                    <br><br>
+                  <input type="submit" />
+                  </form>
+                  <!--th>id</th>
                   <th>author_name</th>
                   <th>status</th>
                   <th>create_time</th>
-                  <th>author_id</th>
+                  <th>author_id</th-->
                 </tr>
               </thead>
               <tbody id="table_content">
@@ -167,36 +176,7 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
 
-    <!--get json data and set html-->
-    <script>
-      function getJsonLength(jsonData) {
-        var jsonLength = 0;
-        for (var item in jsonData) {
-          jsonLength++;
-        }
-        return jsonLength;
-      }
-      $.getJSON('http://localhost:3000/get_author', function (data) {
-        var jsonLength = getJsonLength(data);
-        var htmlString = "";
-        for (var i = 0; i < jsonLength; i++) {
-          /*<tr>
-                    <th>id</th>
-                    <th>author_name</th>
-                    <th>status</th>
-                    <th>create_time</th>
-                    <th>author_id</th>
-          </tr>*/
-          htmlString += "<tr><th>" + data[i].id +
-            "</th><th>" + data[i].author_name +
-            "</th><th>" + data[i].status +
-            "</th><th>" + data[i].create_time +
-            "</th><th>" + data[i].author_id + "</th></tr>";
-        }
-        $("#table_content").html(htmlString);
-      });
-
-    </script>
+    
 
   </div>
 </body>

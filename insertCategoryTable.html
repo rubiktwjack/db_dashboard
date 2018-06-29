@@ -101,36 +101,37 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Author Table</div>
-        <div class="card-body">
+          <i class="fa fa-table"></i> Insert to Category Table</div>
+        <!--div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"-->
+        <div>
+          <div>
+            <table>
               <thead>
-                <tr>
-                  <th>id</th>
-                  <th>book_id</th>
-                  <th>book_name</th>
-                  <th>book_title</th>
-                  <th>book_description</th>
-                  <th>publish_date</th>
-                  <th>book_isbn</th>
-                  <th>book_price</th>
-                  <th>author_id</th>
-                  <th>publish_id</th>
-                  <th>state</th>
+                <tr>                  
+                  <form action="http://localhost:3000/insert_category" method="post">
+                    <br>
+                    書的分類: <input type="text" name="categoryName" />
+                    <br><br>
+                  <input type="submit" />
+                  </form>
+                  <!--th>id</th>
+                  <th>author_name</th>
+                  <th>status</th>
                   <th>create_time</th>
-                  <th>book_img</th>
+                  <th>author_id</th-->
                 </tr>
               </thead>
-              <tbody id="table_content">
-                <!--tr>
+              <!--tbody id="table_content">
+                <tr>
                   <td>Tiger Nixon</td>
                   <td>System Architect</td>
                   <td>Edinburgh</td>
                   <td>Edinburgh</td>
                   <td>Edinburgh</td>
-                </tr-->
-              </tbody>
+                </tr>
+              </tbody-->
             </table>
           </div>
         </div>
@@ -181,54 +182,7 @@
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
 
-    <!--get json data and set html-->
-    <script>
-      function getJsonLength(jsonData) {
-        var jsonLength = 0;
-        for (var item in jsonData) {
-          jsonLength++;
-        }
-        return jsonLength;
-      }
-      $.getJSON('http://localhost:3000/get_books', function (data) {
-        var jsonLength = getJsonLength(data);
-        var htmlString = "";
-        for (var i = 0; i < jsonLength; i++) {
-          /*<tr>
-                  <th>id</th>
-                  <th>book_id</th>
-                  <th>book_name</th>
-                  <th>book_title</th>
-                  <th>book_description</th>
-                  <th>publish_date</th>
-                  <th>book_isbn</th>
-                  <th>book_price</th>
-                  <th>author_id</th>
-                  <th>publish_id</th>
-                  <th>state</th>
-                  <th>create_time</th>
-                  <th>book_img</th>
-          </tr>*/
-          htmlString += "<tr><th>" + data[i].id +
-            "</th><th>" + data[i].book_id +
-            "</th><th>" + data[i].book_name +
-            "</th><th>" + data[i].book_title +
-            "</th><th>" + data[i].book_description + 
-            "</th><th>" + data[i].publish_date +
-            "</th><th>" + data[i].book_isbn +
-            "</th><th>" + data[i].book_price +
-            "</th><th>" + data[i].author_id +
-            "</th><th>" + data[i].publish_id +
-            "</th><th>" + data[i].state +
-            "</th><th>" + data[i].create_time +
-            "</th><th>" + data[i].book_img +
-            "</th></tr>";
-        }
-        $("#table_content").html(htmlString);
-      });
-      
-
-    </script>
+    
 
   </div>
 </body>

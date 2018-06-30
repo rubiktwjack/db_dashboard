@@ -147,7 +147,7 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Delete Author Table</div>
+          <i class="fa fa-table"></i> Delete User Table</div>
         <!--div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"-->
@@ -156,9 +156,12 @@
             <table>
               <thead>
                 <tr>
-                  <form action="http://localhost:3000/delete_author" method="post">
-                    <br> 欲刪除作家姓名:
-                    <input type="text" name="authorName" />
+                  <form action="http://localhost:3000/delete_user" method="post">
+                    <br> 請輸入欲刪除的使用者帳號與密碼:
+                    <br>
+                    帳號:<input type="text" name="userName" />
+                    <br>
+                    密碼:<input type="text" name="userPassword" />
                     <br>
                     <br>
                     <input type="submit" />

@@ -22,54 +22,88 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Book Store</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
+
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="authorTables.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#authorTable" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Author Table</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="authorTable">
+            <li>
+              <a href="authorTables.html">Tables</a>
+            </li>
+            <li>
+              <a href="insertAuthorTable.html">Insert Author</a>
+            </li>
+          </ul>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="insertAuthorTable.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Insert to Author Table</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="booksTables.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#booksTable" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Books Table</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="booksTable">
+            <li>
+              <a href="booksTables.html">Tables</a>
+            </li>
+            <li>
+              <a href="insertBooksTable.html">Insert Books</a>
+            </li>
+          </ul>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="publisherTables.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#publisherTable" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Publishers Table</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="publisherTable">
+            <li>
+              <a href="publisherTables.html">Tables</a>
+            </li>
+            <li>
+              <a href="insertPublisherTable.html">Insert Publisher</a>
+            </li>
+          </ul>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="usersTables.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#usersTable" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Users Table</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="usersTable">
+            <li>
+              <a href="usersTables.html">Tables</a>
+            </li>
+            <li>
+              <a href="insertUsersTable.html">Insert User</a>
+            </li>
+          </ul>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="categorysTables.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#categoryTable" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Categorys Table</span>
+            <span class="nav-link-text">Category Table</span>
           </a>
+          <ul class="sidenav-second-level collapse" id="categoryTable">
+            <li>
+              <a href="categoryTables.html">Tables</a>
+            </li>
+            <li>
+              <a href="insertCategoryTable.html">Insert Category</a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="insertCategoryTable.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Insert to Categorys Table</span>
-          </a>
-        </li>
+
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
@@ -183,50 +217,49 @@
 
     <!--get json data and set html-->
     <script>
-      function getJsonLength(jsonData) {
-        var jsonLength = 0;
-        for (var item in jsonData) {
-          jsonLength++;
-        }
-        return jsonLength;
+    function getJsonLength(jsonData) {
+      var jsonLength = 0;
+      for (var item in jsonData) {
+        jsonLength++;
       }
-      $.getJSON('http://localhost:3000/get_books', function (data) {
-        var jsonLength = getJsonLength(data);
-        var htmlString = "";
-        for (var i = 0; i < jsonLength; i++) {
-          /*<tr>
-                  <th>id</th>
-                  <th>book_id</th>
-                  <th>book_name</th>
-                  <th>book_title</th>
-                  <th>book_description</th>
-                  <th>publish_date</th>
-                  <th>book_isbn</th>
-                  <th>book_price</th>
-                  <th>author_id</th>
-                  <th>publish_id</th>
-                  <th>state</th>
-                  <th>create_time</th>
-                  <th>book_img</th>
-          </tr>*/
-          htmlString += "<tr><th>" + data[i].id +
-            "</th><th>" + data[i].book_id +
-            "</th><th>" + data[i].book_name +
-            "</th><th>" + data[i].book_title +
-            "</th><th>" + data[i].book_description + 
-            "</th><th>" + data[i].publish_date +
-            "</th><th>" + data[i].book_isbn +
-            "</th><th>" + data[i].book_price +
-            "</th><th>" + data[i].author_id +
-            "</th><th>" + data[i].publish_id +
-            "</th><th>" + data[i].state +
-            "</th><th>" + data[i].create_time +
-            "</th><th>" + data[i].book_img +
-            "</th></tr>";
-        }
-        $("#table_content").html(htmlString);
-      });
-      
+      return jsonLength;
+    }
+    $.getJSON('http://localhost:3000/get_books', function(data) {
+      var jsonLength = getJsonLength(data);
+      var htmlString = "";
+      for (var i = 0; i < jsonLength; i++) {
+        /*<tr>
+                <th>id</th>
+                <th>book_id</th>
+                <th>book_name</th>
+                <th>book_title</th>
+                <th>book_description</th>
+                <th>publish_date</th>
+                <th>book_isbn</th>
+                <th>book_price</th>
+                <th>author_id</th>
+                <th>publish_id</th>
+                <th>state</th>
+                <th>create_time</th>
+                <th>book_img</th>
+        </tr>*/
+        htmlString += "<tr><th>" + data[i].id +
+          "</th><th>" + data[i].book_id +
+          "</th><th>" + data[i].book_name +
+          "</th><th>" + data[i].book_title +
+          "</th><th>" + data[i].book_description +
+          "</th><th>" + data[i].publish_date +
+          "</th><th>" + data[i].book_isbn +
+          "</th><th>" + data[i].book_price +
+          "</th><th>" + data[i].author_id +
+          "</th><th>" + data[i].publish_id +
+          "</th><th>" + data[i].state +
+          "</th><th>" + data[i].create_time +
+          "</th><th>" + data[i].book_img +
+          "</th></tr>";
+      }
+      $("#table_content").html(htmlString);
+    });
 
     </script>
 

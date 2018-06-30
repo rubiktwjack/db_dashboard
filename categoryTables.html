@@ -142,8 +142,8 @@
               <thead>
                 <tr>
                   <th>id</th>
-                  <th>publisher_id</th>
-                  <th>company_name</th>
+                  <th>category_id</th>
+                  <th>category_name</th>
                   <th>status</th>
                   <th>creation_time</th>
                 </tr>
@@ -216,22 +216,22 @@
       }
       return jsonLength;
     }
-    $.getJSON('http://localhost:3000/get_publisher', function(data) {
+    $.getJSON('http://localhost:3000/get_category', function(data) {
       var jsonLength = getJsonLength(data);
       var htmlString = "";
       for (var i = 0; i < jsonLength; i++) {
         /*<tr>
-                  <tr>
+                <tr>
                 <th>id</th>
-                <th>publisher_id</th>
-                <th>company_name</th>
+                <th>category_id</th>
+                <th>category_name</th>
                 <th>status</th>
                 <th>creation_time</th>
-              </tr>
+                </tr>
         </tr>*/
         htmlString += "<tr><th>" + data[i].id +
-          "</th><th>" + data[i].publisher_id +
-          "</th><th>" + data[i].company_name +
+          "</th><th>" + data[i].category_id +
+          "</th><th>" + data[i].category_name +
           "</th><th>" + data[i].status +
           "</th><th>" + data[i].creation_time + "</th></tr>";
       }

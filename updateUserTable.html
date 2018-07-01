@@ -165,17 +165,42 @@
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Publisher Table</div>
-        <div class="card-body">
+          <i class="fa fa-table"></i> Update User Table</div>
+        <!--div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"-->
+        <div>
+          <div>
+            <table>
               <thead>
                 <tr>
-                  <th>id</th>
-                  <th>publisher_id</th>
-                  <th>company_name</th>
+                  <form action="http://localhost:3000/update_user" method="post">
+                    <br> 
+                    欲修改之user ID:
+                    <input type="text" name="ID" />
+                    <br>
+                    修改後的user name:
+                    <input type="text" name="userName" />
+                    <br>
+                    修改後的password:
+                    <input type="text" name="userPassword" />
+                    <br>
+                    修改後的email:
+                    <input type="text" name="email" />
+                    <br>
+                    修改後的phone:
+                    <input type="text" name="phone" />
+                    <br>
+                    修改後的address:
+                    <input type="text" name="address" />
+                    <br>
+                    <input type="submit" />
+                  </form>
+                  <!--th>id</th>
+                  <th>author_name</th>
                   <th>status</th>
-                  <th>creation_time</th>
+                  <th>create_time</th>
+                  <th>author_id</th-->
                 </tr>
               </thead>
               <tbody id="table_content">
@@ -236,39 +261,6 @@
     <script src="js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
-
-    <!--get json data and set html-->
-    <script>
-    function getJsonLength(jsonData) {
-      var jsonLength = 0;
-      for (var item in jsonData) {
-        jsonLength++;
-      }
-      return jsonLength;
-    }
-    $.getJSON('http://localhost:3000/get_publisher', function(data) {
-      var jsonLength = getJsonLength(data);
-      var htmlString = "";
-      for (var i = 0; i < jsonLength; i++) {
-        /*<tr>
-                  <tr>
-                <th>id</th>
-                <th>publisher_id</th>
-                <th>company_name</th>
-                <th>status</th>
-                <th>creation_time</th>
-              </tr>
-        </tr>*/
-        htmlString += "<tr><th>" + data[i].id +
-          "</th><th>" + data[i].publisher_id +
-          "</th><th>" + data[i].company_name +
-          "</th><th>" + data[i].status +
-          "</th><th>" + data[i].creation_time + "</th></tr>";
-      }
-      $("#table_content").html(htmlString);
-    });
-
-    </script>
 
   </div>
 </body>
